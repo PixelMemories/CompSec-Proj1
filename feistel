@@ -22,7 +22,7 @@ def create_rkeys(main_key: int, rounds: int = 10) -> list:
 def frounder(r: int, k: int) -> int:
 
     temp = ((r ^ k) * 0xa3b2c1) & 0xFFFFFFFFFFFFFFFF
-    # rotate right by 23 bits (equivalently, left by 41 bits)
+    # rotate by 23 bits 
     right = temp >> 23
     left  = (temp << 41) & 0xFFFFFFFFFFFFFFFF
     return (right | left) & 0xFFFFFFFFFFFFFFFF
@@ -106,7 +106,7 @@ def feistel_encrypt(data: bytes, round_keys: list) -> bytes:
 def feistel_decrypt(data: bytes, round_keys: list) -> bytes:
     
     if len(data) % BLOCK_SIZE != 0:
-        raise ValueError("Not a M16 bytes.")
+        raise ValueError("Not a M of 16 bytes.")
 
     plaintext_padded = b""
     for i in range(0, len(data), BLOCK_SIZE):
@@ -120,9 +120,8 @@ def feistel_decrypt(data: bytes, round_keys: list) -> bytes:
 
 def main():
     if len(sys.argv) != 5:
-        print("Bad Command Please Use:")
-        print("./feistel -e <password> <plaintext_file> <ciphertext_file>")
-        print("./feistel -d <password> <ciphertext_file> <plaintext_file>")
+        print("Please Use: ./feistel -e <password> <plaintext_file> <ciphertext_file>")
+        print("Please Use: ./feistel -d <password> <ciphertext_file> <plaintext_file>")
         sys.exit(1)
 
     mode = sys.argv[1]
