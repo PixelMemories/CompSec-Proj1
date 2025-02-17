@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import sys
 
+# Author: Richard Li - (rl902)
+
 def LinCon_gen(seed):
 
     x = seed % 256

@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import sys
 
+# Author: Richard Li - (rl902)
+
 BLOCK_SIZE = 16 
 
 def make_hash(text: str) -> int:
