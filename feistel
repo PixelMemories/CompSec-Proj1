@@ -121,6 +121,7 @@ def feistel_decrypt(data: bytes, round_keys: list) -> bytes:
     return plaintext
 
 def main():
+    
     if len(sys.argv) != 5:
         print("Please Use: ./feistel -e <password> <plaintext_file> <ciphertext_file>")
         print("Please Use: ./feistel -d <password> <ciphertext_file> <plaintext_file>")

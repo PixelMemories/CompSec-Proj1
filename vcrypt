@@ -4,12 +4,14 @@ import sys
 # Author: Richard Li - (rl902)
 
 def LinCon_gen(seed):
+    
     x = seed % 256
     while True:
         x = (1103515245 * x + 12345) % 256
         yield x
 
 def make_hash(password):
+
     h = 0
     for ch in password:
         h = ord(ch) + (h << 6) + (h << 16) - h
@@ -17,6 +19,7 @@ def make_hash(password):
     return h
 
 def encrypt(password: str, plaintext_file: str, ciphertext_file: str):
+
     # Generate a random IV from /dev/random.
     try:
         with open("/dev/random", "rb") as rand_source:
@@ -48,6 +51,7 @@ def encrypt(password: str, plaintext_file: str, ciphertext_file: str):
             fout.write(out_chunk)
 
 def decrypt(password: str, ciphertext_file: str, plaintext_file: str):
+
     with open(ciphertext_file, "rb") as fin:
         # Get the IV.
         iv_bytes = fin.read(8)

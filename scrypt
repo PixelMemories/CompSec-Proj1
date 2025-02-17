@@ -38,6 +38,7 @@ def stream_cypher(in_file: str, out_file: str, password: str):
             fout.write(out_chunk)
 
 def main():
+    
     if len(sys.argv) != 4:
         print("Please Use: ./scrypt <password> <input_file> <output_file>")
         sys.exit(1)
